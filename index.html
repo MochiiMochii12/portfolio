@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selected Work | Yehezkiel</title>
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #061225;
+      --ink: #ccd6f6;
+      --muted: #8892b0;
+      --line: #233554;
+      --panel: #112240;
+      --green: #10b981;
+      --blue: #00e5ff;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Manrope", sans-serif;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 26px 44px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      background: rgba(6, 18, 37, .94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand, .eyebrow, .project-number, .project-type, .tech-list, .footer-note {
+      font-family: "DM Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .brand { font-size: .8rem; font-weight: 500; }
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-left: auto;
+      margin-right: 28px;
+      color: var(--green);
+      font-family: "DM Mono", monospace;
+      font-size: .62rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .availability::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, .12), 0 0 12px rgba(16, 185, 129, .55);
+      animation: status-pulse 2.2s ease-in-out infinite;
+    }
+    .site-nav { display: flex; gap: 28px; font-size: .72rem; }
+    .site-nav a {
+      padding: 9px 13px;
+      color: #f5f7ff;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: color .2s, background .2s, border-color .2s;
+    }
+    .site-nav a:hover,
+    .site-nav a.active {
+      color: var(--paper);
+      background: linear-gradient(135deg, #ffffff 0%, #e5edf8 100%);
+      border-color: #ffffff;
+    }
+    .site-nav .nav-button {
+      padding: 9px 13px;
+      font-weight: 600;
+    }
+    .site-nav .nav-button:hover { color: var(--paper); background: linear-gradient(135deg, #ffffff 0%, #e5edf8 100%); border-color: #ffffff; }
+
+    .intro {
+      max-width: 1280px;
+      min-height: 82vh;
+      padding: 154px 44px 92px;
+      margin: auto;
+      scroll-margin-top: 90px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(250px, .55fr);
+      gap: 7vw;
+      align-items: center;
+    }
+
+    .eyebrow { color: var(--blue); font-size: .68rem; margin-bottom: 24px; }
+    h1, h2, p { margin: 0; }
+    h1 {
+      max-width: 820px;
+      font-size: clamp(2.9rem, 5.2vw, 5.8rem);
+      font-weight: 600;
+      line-height: 1.05;
+      color: #fff;
+      letter-spacing: -.04em;
+    }
+    .gradient-text {
+      background: linear-gradient(100deg, #b8c9ff 0%, #79dcff 48%, #00e5ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .intro-copy {
+      max-width: 760px;
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.6vw, 1.3rem);
+      line-height: 1.6;
+    }
+    .intro-copy strong { color: #fff; font-weight: 600; }
+    .platform-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+      font-family: "DM Mono", monospace;
+      font-size: .65rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .platform-list span {
+      padding: 9px 12px;
+      color: var(--blue);
+      border: 1px solid var(--line);
+      background: rgba(17, 34, 64, .72);
+    }
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 34px;
+    }
+    .social-links a {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      font-family: "DM Mono", monospace;
+      font-size: .65rem;
+      text-decoration: none;
+      transition: color .2s, border-color .2s, background .2s;
+    }
+    .social-links a:hover {
+      color: var(--paper);
+      border-color: var(--blue);
+      background: var(--blue);
+    }
+    .contact-section {
+      max-width: 1280px;
+      padding: 90px 44px 72px;
+      margin: auto;
+      scroll-margin-top: 90px;
+    }
+    .contact-panel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      padding: 30px 34px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    .contact-panel h2 { color: #fff; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 600; letter-spacing: -.03em; }
+    .contact-panel p { margin-top: 8px; color: var(--muted); }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 14px;
+      color: var(--paper);
+      background: linear-gradient(135deg, #ffffff 0%, #e5edf8 100%);
+      border: 1px solid #ffffff;
+      border-radius: 6px;
+      font-family: "DM Mono", monospace;
+      font-size: .62rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .contact-links img { width: 15px; height: 15px; display: block; }
+    .contact-links a:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0, 229, 255, .16); }
+    .portrait-frame {
+      width: min(100%, 310px);
+      justify-self: end;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--panel);
+      box-shadow: 18px 18px 0 rgba(0, 0, 0, .2);
+    }
+    .portrait-frame img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      filter: saturate(.8);
+    }
+
+    .experience {
+      max-width: 1280px;
+      padding: 100px 44px 74px;
+      margin: auto;
+      scroll-margin-top: 90px;
+    }
+    .section-heading { margin-bottom: 30px; }
+    .section-heading h2 {
+      color: #fff;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 600;
+      letter-spacing: -.03em;
+    }
+    .experience-timeline {
+      position: relative;
+      display: grid;
+      gap: 18px;
+      padding-left: 24px;
+    }
+    .experience-timeline::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      bottom: 8px;
+      left: 4px;
+      width: 1px;
+      background: var(--line);
+    }
+    .experience-item {
+      position: relative;
+      padding: 20px 22px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    }
+    .experience-item:hover { transform: translateY(-3px); border-color: #3a5680; box-shadow: 0 10px 24px rgba(0, 0, 0, .16); }
+    .experience-item::before {
+      content: "";
+      position: absolute;
+      top: 25px;
+      left: -25px;
+      width: 9px;
+      height: 9px;
+      border: 2px solid var(--paper);
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 10px rgba(0, 229, 255, .35);
+    }
+    .experience-item:first-child::before { background: var(--green); box-shadow: 0 0 10px rgba(16, 185, 129, .45); }
+    .experience-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+    }
+    .experience-item h3 { color: #fff; font-size: 1rem; font-weight: 600; }
+    .experience-role { margin-top: 5px; color: var(--blue); font-family: "DM Mono", monospace; font-size: .62rem; }
+    .experience-date {
+      flex: 0 0 auto;
+      padding: 5px 8px;
+      color: var(--green);
+      background: rgba(16, 185, 129, .1);
+      font-family: "DM Mono", monospace;
+      font-size: .58rem;
+      text-transform: uppercase;
+    }
+    .experience-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 15px; }
+    .experience-tags span { padding: 5px 7px; color: var(--ink); background: #192844; font-family: "DM Mono", monospace; font-size: .56rem; }
+
+    .project-list {
+      padding: 1px 22px 58px;
+      border-top: 1px solid var(--line);
+      scroll-margin-top: 90px;
+    }
+    .project-heading {
+      max-width: 1280px;
+      padding: 54px 22px 4px;
+      margin: auto;
+    }
+    .project-heading h2 {
+      color: #fff;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 600;
+      letter-spacing: -.03em;
+    }
+    .project {
+      min-height: 300px;
+      max-width: 1280px;
+      padding: 22px 26px;
+      margin: 32px auto 0;
+      display: grid;
+      grid-template-columns: minmax(240px, .75fr) minmax(460px, 1.25fr);
+      gap: 7vw;
+      align-items: center;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      box-shadow: 0 16px 35px rgba(0, 0, 0, .18);
+      content-visibility: auto;
+      contain-intrinsic-size: 300px;
+      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    }
+    .project:hover { transform: translateY(-4px); border-color: #3a5680; box-shadow: 0 20px 40px rgba(0, 0, 0, .28); }
+    .project:hover {
+      border-color: var(--blue);
+      box-shadow: 0 22px 42px rgba(0, 0, 0, .36), 0 0 0 1px rgba(0, 229, 255, .16), 0 0 28px rgba(0, 153, 255, .13);
+    }
+    .project:hover .device-main { transform: rotate(4deg) scale(1.025); }
+    .project:hover .device-side { transform: rotate(-7deg) translateY(28px) scale(1.025); }
+    .js .experience-item,
+    .js .project {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .6s ease, transform .6s ease, border-color .35s ease, box-shadow .35s ease;
+    }
+    .js .experience-item.is-visible,
+    .js .project.is-visible { opacity: 1; transform: translateY(0); }
+    .js .experience-item.is-visible:hover { transform: translateY(-3px); }
+    .js .project.is-visible:hover { transform: translateY(-8px); }
+    .experience-item:nth-child(2), .project:nth-of-type(3) { transition-delay: .08s; }
+    .experience-item:nth-child(3), .project:nth-of-type(4) { transition-delay: .16s; }
+    @keyframes status-pulse {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(16, 185, 129, .12), 0 0 12px rgba(16, 185, 129, .55); }
+      50% { box-shadow: 0 0 0 7px rgba(16, 185, 129, .04), 0 0 18px rgba(16, 185, 129, .28); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+    .project:nth-child(even) { grid-template-columns: minmax(460px, 1.25fr) minmax(240px, .75fr); }
+    .project:nth-child(even) .project-info { order: 2; }
+    .project:nth-child(even) .visual { order: 1; }
+    .project-number { color: var(--green); font-size: .68rem; }
+    .project h2 {
+      margin: 20px 0 22px;
+      font-size: clamp(2rem, 3.5vw, 3.5rem);
+      font-weight: 500;
+      line-height: .94;
+      color: #fff;
+      letter-spacing: -.04em;
+    }
+    .project-description { max-width: 390px; color: var(--muted); line-height: 1.7; }
+    .project-type { display: block; color: var(--muted); font-size: .65rem; }
+    .tech-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 30px; font-size: .6rem; }
+    .tech-list span { border: 1px solid var(--line); padding: 8px 10px; }
+
+    .visual {
+      position: relative;
+      min-height: 245px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .visual::before {
+      content: "";
+      position: absolute;
+      inset: 8% 5%;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      transform: rotate(-3deg);
+    }
+    .device {
+      position: relative;
+      z-index: 1;
+      width: min(45%, 170px);
+      overflow: hidden;
+      background: #15233c;
+      border: 7px solid #1e2d47;
+      border-radius: 26px;
+      box-shadow: 18px 22px 0 rgba(0, 0, 0, .25);
+      transition: transform .4s cubic-bezier(.2, .8, .2, 1), box-shadow .4s ease;
+    }
+    .device img { display: block; width: 100%; aspect-ratio: 9 / 17; object-fit: cover; }
+    .device-main { transform: rotate(4deg); }
+    .device-side { width: min(28%, 105px); margin-left: -12%; transform: rotate(-7deg) translateY(28px); z-index: 2; }
+    .device-side img { aspect-ratio: 9 / 16; }
+    .desktop-project .device-main { width: min(70%, 300px); border-radius: 10px; border-width: 6px; }
+    .desktop-project .device-main img { aspect-ratio: 16 / 10; }
+    .desktop-project .device-side { width: min(38%, 150px); border-radius: 8px; }
+    .desktop-project .device-side img { aspect-ratio: 16 / 10; }
+    .tablet-project .device-main { width: min(58%, 220px); border-radius: 15px; border-width: 6px; }
+    .tablet-project .device-main img { aspect-ratio: 4 / 3; }
+    .tablet-project .device-side { width: min(35%, 130px); border-radius: 12px; }
+    .tablet-project .device-side img { aspect-ratio: 4 / 3; }
+    .willify .device-main { border-color: #243b63; }
+    .willify .visual::before { background: #101d34; border-color: #1e3760; }
+    .parker .visual::before { background: #132846; transform: rotate(3deg); }
+    .parker .device-main { border-radius: 18px; }
+    .poelife .visual::before { background: #172a42; transform: rotate(-2deg); }
+    .poelife .device-main { border-color: #365271; }
+    .biny-app .visual::before { background: #12352f; border-color: #1d6658; }
+    .mctodc-report .visual::before { background: #24304d; border-color: #3d5686; }
+
+    .site-footer {
+      max-width: 1280px;
+      padding: 30px 44px 42px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: .75rem;
+    }
+
+    @media (max-width: 760px) {
+      .site-header { padding: 18px 22px; }
+      .site-header, .intro, .site-footer { padding-left: 22px; padding-right: 22px; }
+      .project-list { padding: 1px 14px 38px; }
+      .site-header { align-items: flex-start; gap: 20px; }
+      .availability { order: 3; width: 100%; margin: 4px 0 0; }
+      .site-nav { gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
+      .site-nav .nav-button { padding: 7px 10px; }
+      .intro { min-height: auto; padding-top: 130px; padding-bottom: 100px; display: block; }
+      .intro-copy { margin-top: 48px; }
+      .experience { padding: 52px 22px 58px; }
+      .contact-section { padding: 58px 22px 52px; }
+      .contact-panel { display: block; padding: 24px 20px; }
+      .contact-links { margin-top: 24px; }
+      .experience-top { display: block; }
+      .experience-date { display: inline-block; margin-top: 10px; }
+      .project, .project:nth-child(even) { display: flex; flex-direction: column; align-items: stretch; gap: 24px; padding: 24px 18px; margin-top: 18px; }
+      .project:nth-child(even) .project-info, .project:nth-child(even) .visual { order: initial; }
+      .visual { min-height: 235px; }
+      .device { width: 48%; max-width: 145px; }
+      .device-side { width: 28%; max-width: 95px; }
+      .site-footer { display: block; line-height: 2; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">Yehezkiel / Portfolio</div>
+    <div class="availability">Available for any opportunities</div>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a class="nav-button" data-section="about" href="#about">About</a>
+      <a class="nav-button" data-section="experience" href="#experience">Experience</a>
+      <a data-section="work" href="#work">Selected work</a>
+      <a data-section="contact" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro" id="about">
+      <div>
+        <div class="eyebrow">Software engineer / Mobile applications</div>
+        <h1>Mobile Software <span class="gradient-text">Engineer.</span></h1>
+        <p class="intro-copy">I am a Software Engineer with a strong interest in building practical applications that solve real-world problems. I study Mobile Application and Technologies at Bina Nusantara University. I focus on UI/UX, front-end, and back-end development using many coding languages.</p>
+        <div class="platform-list" aria-label="Mobile languages and frameworks">
+          <span>Swift / SwiftUI</span>
+          <span>Kotlin / Compose</span>
+          <span>Flutter / Dart</span>
+          <span>React Native</span>
+        </div>
+      </div>
+      <div class="portrait-frame">
+        <img src="assets/profile.jpg" alt="Portrait of Yehezkiel" fetchpriority="high">
+      </div>
+    </section>
+
+    <section class="experience" id="experience" aria-labelledby="experience-title">
+      <div class="section-heading">
+        <div class="eyebrow">System logs</div>
+        <h2 id="experience-title">Experience &amp; Leadership Milestones</h2>
+      </div>
+      <div class="experience-timeline">
+        <article class="experience-item">
+          <div class="experience-top">
+            <div>
+              <h3>Mobile Developer Intern</h3>
+              <div class="experience-role">TechInnovate Labs / Mobile Products</div>
+            </div>
+            <div class="experience-date">2023 — Present</div>
+          </div>
+          <div class="experience-tags"><span>Flutter &amp; Swift Features</span><span>30% CI Test Coverage</span><span>Memory Profiling</span></div>
+        </article>
+        <article class="experience-item">
+          <div class="experience-top">
+            <div>
+              <h3>Freelance Mobile App Developer</h3>
+              <div class="experience-role">Independent Contractor / Client Deliverables</div>
+            </div>
+            <div class="experience-date">2022 — 2023</div>
+          </div>
+          <div class="experience-tags"><span>3 Production MVPs</span><span>App Store &amp; Play Store Shipped</span><span>Firebase Auth &amp; Cloud</span></div>
+        </article>
+        <article class="experience-item">
+          <div class="experience-top">
+            <div>
+              <h3>Undergraduate Mobile Researcher</h3>
+              <div class="experience-role">University Mobile Systems &amp; HCI Lab</div>
+            </div>
+            <div class="experience-date">2021 — 2022</div>
+          </div>
+          <div class="experience-tags"><span>Sensor Telemetry Apps</span><span>Battery Curves Analysis</span><span>Open Source Tools</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="project-list" id="work" aria-label="Selected projects">
+      <div class="project-heading">
+        <div class="eyebrow">Selected work / 2021—2024</div>
+        <h2>Featured Projects</h2>
+      </div>
+      <article class="project willify desktop-project">
+        <div class="project-info">
+          <span class="project-number">01 / Music platform</span>
+          <h2>Willify</h2>
+          <span class="project-type">A home for independent sound</span>
+          <p class="project-description">A cinematic music platform where emerging artists can share their work and listeners can find their next favorite song.</p>
+          <div class="tech-list"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+        </div>
+        <div class="visual">
+          <div class="device device-side"><img loading="lazy" decoding="async" src="assets/willify1.jpg" alt="Willify website preview"></div>
+          <div class="device device-main"><img loading="lazy" decoding="async" src="assets/willify2.jpg" alt="Willify music discovery screen"></div>
+        </div>
+      </article>
+
+      <article class="project parker">
+        <div class="project-info">
+          <span class="project-number">02 / Urban mobility</span>
+          <h2>Parker</h2>
+          <span class="project-type">Parking without the circling</span>
+          <p class="project-description">A mobile application that helps drivers find parking spaces, reserve a spot, and keep their ticket in one calm, simple flow.</p>
+          <div class="tech-list"><span>Kotlin</span><span>Firebase</span><span>Maps</span></div>
+        </div>
+        <div class="visual">
+          <div class="device device-side"><img loading="lazy" decoding="async" src="assets/parker1.jpg" alt="Parker map view"></div>
+          <div class="device device-main"><img loading="lazy" decoding="async" src="assets/parker2.jpg" alt="Parker parking reservation screen"></div>
+        </div>
+      </article>
+
+      <article class="project poelife">
+        <div class="project-info">
+          <span class="project-number">03 / Social reading</span>
+          <h2>Poelife</h2>
+          <span class="project-type">A quieter place for poetry</span>
+          <p class="project-description">A poetry community for sharing small thoughts, finding new voices, and keeping the words that stay with you close.</p>
+          <div class="tech-list"><span>Flutter</span><span>JavaScript</span><span>Firebase</span></div>
+        </div>
+        <div class="visual">
+          <div class="device device-side"><img loading="lazy" decoding="async" src="assets/poelife1.jpg" alt="Poelife login screen"></div>
+          <div class="device device-main"><img loading="lazy" decoding="async" src="assets/poelife2.jpg" alt="Poelife poetry feed screen"></div>
+        </div>
+      </article>
+
+      <article class="project biny-app tablet-project">
+        <div class="project-info">
+          <span class="project-number">04 / Machine learning</span>
+          <h2>Biny App</h2>
+          <span class="project-type">Smarter waste classification</span>
+          <p class="project-description">A tablet application that uses machine learning to identify and classify waste, helping users make faster and more consistent recycling decisions.</p>
+          <div class="tech-list"><span>Python</span><span>TensorFlow</span><span>Computer Vision</span></div>
+        </div>
+        <div class="visual">
+          <div class="device device-side"><img loading="lazy" decoding="async" src="assets/biny1.jpg" alt="Biny App waste classification screen"></div>
+          <div class="device device-main"><img loading="lazy" decoding="async" src="assets/biny2.jpg" alt="Biny App classification result"></div>
+        </div>
+      </article>
+
+      <article class="project mctodc-report desktop-project">
+        <div class="project-info">
+          <span class="project-number">05 / Minecraft systems</span>
+          <h2>MCtoDC Report</h2>
+          <span class="project-type">Server reporting made simple</span>
+          <p class="project-description">A Minecraft reporting system that connects server activity with a clear dashboard for reviewing player reports and moderation workflows.</p>
+          <div class="tech-list"><span>Java</span><span>Spigot</span><span>Discord API</span></div>
+        </div>
+        <div class="visual">
+          <div class="device device-side"><img loading="lazy" decoding="async" src="assets/reportsystem1.jpg" alt="MCtoDC Report dashboard"></div>
+          <div class="device device-main"><img loading="lazy" decoding="async" src="assets/reportsystem2.jpg" alt="MCtoDC Report system screen"></div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="contact-panel">
+        <div>
+          <div class="eyebrow">Start a conversation</div>
+          <h2 id="contact-title">Let&apos;s build something useful.</h2>
+          <p>Find me through any of these channels.</p>
+        </div>
+        <div class="contact-links" aria-label="Contact links">
+          <a href="https://wa.me/6285187377370" target="_blank" rel="noreferrer" aria-label="Contact via WhatsApp"><img src="assets/icons/whatsapp.svg" alt="">WhatsApp <span aria-hidden="true">↗</span></a>
+          <a href="https://github.com/MochiiMochii12" target="_blank" rel="noreferrer" aria-label="Visit GitHub"><img src="assets/icons/github.svg" alt="">GitHub <span aria-hidden="true">↗</span></a>
+          <a href="https://www.instagram.com/k.ulkul" target="_blank" rel="noreferrer" aria-label="Visit Instagram"><img src="assets/icons/instagram.svg" alt="">Instagram <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+  <footer class="site-footer">
+    <span class="footer-note">Say hello / your@email.com</span>
+  </footer>
+  <script>
+    const navigationLinks = document.querySelectorAll(".site-nav a[data-section]");
+    const sections = [...navigationLinks]
+      .map((link) => document.getElementById(link.dataset.section))
+      .filter(Boolean);
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navigationLinks.forEach((link) => {
+          const isActive = link.dataset.section === entry.target.id;
+          link.classList.toggle("active", isActive);
+          if (isActive) link.setAttribute("aria-current", "page");
+          else link.removeAttribute("aria-current");
+        });
+      });
+    }, { rootMargin: "-35% 0px -55% 0px", threshold: 0 });
+
+    sections.forEach((section) => sectionObserver.observe(section));
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+
+    document.querySelectorAll(".experience-item, .project").forEach((item) => revealObserver.observe(item));
+
+    let scrollAnimationFrame;
+
+    function smoothScrollTo(target) {
+      cancelAnimationFrame(scrollAnimationFrame);
+
+      const headerHeight = document.querySelector(".site-header").offsetHeight;
+      const startPosition = window.scrollY;
+      const targetPosition = Math.max(0, target.getBoundingClientRect().top + startPosition - headerHeight - 14);
+      const distance = targetPosition - startPosition;
+      const duration = Math.min(1100, Math.max(550, Math.abs(distance) * 0.65));
+      const startTime = performance.now();
+
+      function animateScroll(currentTime) {
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        const easedProgress = 1 - Math.pow(1 - progress, 3);
+        window.scrollTo(0, startPosition + distance * easedProgress);
+        if (progress < 1) scrollAnimationFrame = requestAnimationFrame(animateScroll);
+      }
+
+      scrollAnimationFrame = requestAnimationFrame(animateScroll);
+    }
+
+    navigationLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const target = document.getElementById(link.dataset.section);
+        if (!target) return;
+
+        navigationLinks.forEach((item) => {
+          const isActive = item === link;
+          item.classList.toggle("active", isActive);
+          if (isActive) item.setAttribute("aria-current", "page");
+          else item.removeAttribute("aria-current");
+        });
+
+        smoothScrollTo(target);
+      });
+    });
+  </script>
+</body>
+</html>
