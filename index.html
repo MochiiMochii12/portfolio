@@ -69,7 +69,7 @@
       border-radius: 50%;
       background: var(--green);
       box-shadow: 0 0 0 4px rgba(16, 185, 129, .12), 0 0 12px rgba(16, 185, 129, .55);
-      animation: status-pulse 2.2s ease-in-out infinite;
+      animation: status-pulse 1.4s ease-in-out infinite;
     }
     .site-nav { display: flex; gap: 28px; font-size: .72rem; }
     .site-nav a {
@@ -278,6 +278,8 @@
     }
     .experience-item h3 { color: #fff; font-size: 1rem; font-weight: 600; }
     .experience-role { margin-top: 5px; color: var(--blue); font-family: "DM Mono", monospace; font-size: .62rem; }
+    .experience-description { display: grid; gap: 8px; margin-top: 16px; color: var(--muted); font-size: .82rem; line-height: 1.5; }
+    .experience-description p::before { content: "- "; color: var(--blue); }
     .experience-date {
       flex: 0 0 auto;
       padding: 5px 8px;
@@ -487,32 +489,45 @@
         <article class="experience-item">
           <div class="experience-top">
             <div>
-              <h3>Mobile Developer Intern</h3>
-              <div class="experience-role">TechInnovate Labs / Mobile Products</div>
+              <h3>Web Development Intern</h3>
+              <div class="experience-role">PT. Prayoga Mandiri Sukses</div>
             </div>
-            <div class="experience-date">2023 — Present</div>
+            <div class="experience-date">Jun 2025 — Jul 2025</div>
           </div>
-          <div class="experience-tags"><span>Flutter &amp; Swift Features</span><span>30% CI Test Coverage</span><span>Memory Profiling</span></div>
+          <div class="experience-description">
+            <p>Assisted in day-to-day operational and technical support tasks to help improve the website.</p>
+            <p>Built responsive user interfaces using HTML, CSS, and JavaScript.</p>
+            <p>Supported the team in system maintenance and bug fixing.</p>
+          </div>
         </article>
         <article class="experience-item">
           <div class="experience-top">
             <div>
-              <h3>Freelance Mobile App Developer</h3>
-              <div class="experience-role">Independent Contractor / Client Deliverables</div>
+              <h3>App Development Intern</h3>
+              <div class="experience-role">Universitas Bina Nusantara</div>
             </div>
-            <div class="experience-date">2022 — 2023</div>
+            <div class="experience-date">Mar 2025 — Aug 2025</div>
           </div>
-          <div class="experience-tags"><span>3 Production MVPs</span><span>App Store &amp; Play Store Shipped</span><span>Firebase Auth &amp; Cloud</span></div>
+          <div class="experience-description">
+            <p>Developed a parking space finder application for any wheeled vehicles.</p>
+            <p>Integrated OpenStreetMap for real-time location display and parking pin interaction.</p>
+            <p>Connected Flutter UI with backend APIs and Firestore for dynamic parking slot display.</p>
+            <p>Designed database schemas for users, parking locations, and transaction records.</p>
+          </div>
         </article>
         <article class="experience-item">
           <div class="experience-top">
             <div>
-              <h3>Undergraduate Mobile Researcher</h3>
-              <div class="experience-role">University Mobile Systems &amp; HCI Lab</div>
+              <h3>App Development Intern</h3>
+              <div class="experience-role">Universitas Bina Nusantara</div>
             </div>
-            <div class="experience-date">2021 — 2022</div>
+            <div class="experience-date">Sep 2025 — Feb 2026</div>
           </div>
-          <div class="experience-tags"><span>Sensor Telemetry Apps</span><span>Battery Curves Analysis</span><span>Open Source Tools</span></div>
+          <div class="experience-description">
+            <p>Developed a poetry application where users can upload poetry and see other people&apos;s poetry.</p>
+            <p>Helped define core features such as user profiles, poem posting, likes, comments, and content feeds.</p>
+            <p>Helped improve navigation for easier use of the application.</p>
+          </div>
         </article>
       </div>
     </section>
@@ -542,7 +557,7 @@
           <h2>Parker</h2>
           <span class="project-type">Parking without the circling</span>
           <p class="project-description">A mobile application that helps drivers find parking spaces, reserve a spot, and keep their ticket in one calm, simple flow.</p>
-          <div class="tech-list"><span>Kotlin</span><span>Firebase</span><span>Maps</span></div>
+          <div class="tech-list"><span>Kotlin</span><span>Firebase</span><span>OpenStreetMap</span></div>
         </div>
         <div class="visual">
           <div class="device device-side"><img loading="lazy" decoding="async" src="assets/parker1.jpg" alt="Parker map view"></div>
@@ -570,7 +585,7 @@
           <h2>Biny App</h2>
           <span class="project-type">Smarter waste classification</span>
           <p class="project-description">A tablet application that uses machine learning to identify and classify waste, helping users make faster and more consistent recycling decisions.</p>
-          <div class="tech-list"><span>Python</span><span>TensorFlow</span><span>Computer Vision</span></div>
+          <div class="tech-list"><span>Flutter</span><span>Python</span><span>Supabase</span></div>
         </div>
         <div class="visual">
           <div class="device device-side"><img loading="lazy" decoding="async" src="assets/biny1.jpg" alt="Biny App waste classification screen"></div>
